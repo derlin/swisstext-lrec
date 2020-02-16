@@ -1,3 +1,4 @@
+mongoengine<0.19,>=0.18
 git+https://github.com/derlin/swisstext.git@ecb775fcf91af2e3c9e9e09bf737bfe77d5a0a09#egg=swisstext-mongo-0.0.1&subdirectory=mongo
 git+https://github.com/derlin/swisstext.git@ecb775fcf91af2e3c9e9e09bf737bfe77d5a0a09#egg=swisstext-cmd-0.0.1&subdirectory=backend
 git+https://github.com/derlin/swisstext-bert-lid.git#egg=bert-lid

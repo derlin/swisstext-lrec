@@ -1,0 +1,27 @@
+pipeline:
+  # note: relative paths point to swisstext.cmd.scraping.tools
+  crawler: .JustextCrawler
+  normalizer: .Normalizer
+  splitter: .MocySplitter
+  decider: lrec_tools.Decider
+  url_filter: lrec_tools.SgUrlFilter
+  sg_detector: bert_lid.BertLid
+
+sg_detector_options:
+  chunk_size: 1000 # avoid out of memory error on CPU
+
+crawler_options:
+  keep_bad: false
+
+normalizer_options:
+  fix_encoding: true
+  strip_emojis: true
+
+splitter_options:
+  keep_newlines: true
+  more: true
+
+options:
+  num_workers: 3
+  min_proba: 0.92
+  crawl_depth: 3
