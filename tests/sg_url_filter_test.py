@@ -27,6 +27,9 @@ test_cases = [
     (
         "http://www.fcbforum.ch/forum/showthread.php?9533-News-und-Transfers-Fussball",
         "http://www.fcbforum.ch/forum/showthread.php?9533-News-und-Transfers-Fussball"),
+    # (
+    #     "http://www.fcbforum.ch/forum/showthread.php?p=1701381#post1701381",
+    #     None),
     (
         "http://www.fcbforum.ch/forum/showthread.php?9533-News-und-Transfers-Fussball/page11",
         "http://www.fcbforum.ch/forum/showthread.php?9533-News-und-Transfers-Fussball/page11"),

@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -eu -o pipefail
+
 # === CONFIGURATION TODO
 
 # path to the root of the swisstext-project. Here, assuming we launch from the root
@@ -8,6 +10,8 @@ ROOT_PATH=$PWD
 VENV_PATH="$ROOT_PATH/venv"
 # mongo db name
 DB=XX
+# config for swisscrawl
+CONFIG="$ROOT_PATH/config/prod_config.yaml"
 # seed file (default: find a text file starting with seeds_)
 SEED_FILE=$(echo "seeds_"*".txt")
 # prefix for the log file. Will generate two .log: $LOG_FILE_PREFIX-scrape.log, $LOG_FILE_PREFIX-search.log
@@ -17,12 +21,13 @@ N_BOOTSTRAP_URLS_PER_ITERS=200
 
 if [ ! -f "$SEED_FILE" ]; then
     echo "$SEED_FILE doesn't exist. Quitting"
+    exit 1
 fi
 
 # === set the venv and export some variables
 
 source "$VENV_PATH/bin/activate"
-export PYTHONPATH="$ROOT_PATH"
+export PYTHONPATH="$ROOT_PATH:$ROOT_PATH/src"
 export PYTHONUNBUFFERED=1
 
 # check st_scrape is available
@@ -31,7 +36,7 @@ st_scrape >& /dev/null
 
 # == prepare db
 
-mongo $DB --quiet --eval "db.dropDatabase()"
+# mongo $DB --quiet --eval "db.dropDatabase()"
 # HERE, either copy the old database OR bootstrap a new one...
 #   INIT: mongo $DB --eval 'db.users.insert({ "_id" : "swisscom", "password" : "f0317c02806a7a326746b8dd4104d57d", "roles" : [ "admin" ] })'
 #   COPY: mongorestore -d $DB $INITIAL_DUMP
@@ -69,7 +74,7 @@ EOF
 echo -e "  iterations: $(echo $iters)\n"
 i=0
 for n in ${iters}; do
-    echo -e "\n===== ITER $i (n=$n) =====\n" | tee -a $LOG
-    (time st_scrape -d $DB -c prod_config.yaml -l info from_mongo --what ext -n $n) |& tee -a $LOG_FILE_PREFIX-scrape.log
+    echo -e "\n===== ITER $i (n=$n) =====\n" | tee -a $LOG_FILE_PREFIX-scrape.log
+    (time st_scrape -d $DB -c "$CONFIG" -l info from_mongo --what ext -n $n) |& tee -a $LOG_FILE_PREFIX-scrape.log
     i=$(( $i + 1 ))
 done

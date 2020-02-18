@@ -52,6 +52,10 @@ if __name__ == '__main__':
         logging.getLogger('generator').setLevel(logging.INFO)
         logging.getLogger('generator-rnd').setLevel(logging.INFO)
 
+        print('Using arguments:')
+        print('\n'.join(f'  {k}={v}' for k, v in vars(args).items()))
+        print()
+
     generator = RandomGenerator()
     # get sentences
     sentences = generator.load_sentences(args)

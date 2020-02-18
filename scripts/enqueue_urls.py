@@ -44,7 +44,7 @@ def main():
         format="[%(levelname)-5s] %(message)s",
         level=logging.DEBUG if args.d else logging.INFO)
 
-    get_connection(db=args.db, host=args.mongo_host, port=args.port)
+    get_connection(db=args.db, host=args.host, port=args.port)
 
     enqueued, malformed, ignored, dup = 0, 0, 0, 0
     for i, line in enumerate(args.url_file):
