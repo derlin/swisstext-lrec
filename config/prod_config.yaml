@@ -23,5 +23,9 @@ splitter_options:
 
 options:
   num_workers: 3
+  # search
+  max_fetches: -1
+  max_results: 20
+  # scrape
   min_proba: 0.92
   crawl_depth: 3
