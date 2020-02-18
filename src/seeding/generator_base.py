@@ -103,7 +103,7 @@ class GeneratorBase(ABC):
                 df = df.sample(frac=1, random_state=args.random_seed) \
                     .groupby('url', group_keys=False).head(args.max_sentences_per_url)
                 logger.info(f'  Sampling {args.max_sentences_per_url} sentence per URL.')
-            sentences = df.text.values
+            sentences = df.text.values.tolist()
 
         elif ext == 'txt':
             # we have a file
@@ -116,7 +116,7 @@ class GeneratorBase(ABC):
 
         if 0 < args.max_sentences < len(sentences):
             logger.info(f'  Keeping only {args.max_sentences} sentences.')
-            sentences = random.choices(sentences, args.max_sentences)
+            sentences = random.sample(sentences, args.max_sentences)
 
         logger.info(f'Got {len(sentences)} sentences.')
 
