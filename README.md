@@ -8,7 +8,7 @@ and tools relative to Swiss German.
 
 # Requirements and notes
 
-* this repo uses **SwissText v0.4** at commit `ecb775fcf91af2e3c9e9e09bf737bfe77d5a0a09` (as shown in the `requirements.txt`). 
+* this repo uses **SwissText v0.4** (as shown in the `requirements.txt`). 
   Using a later version may be possible, but I don't guarantee there are no breaking changes...
 * a BERT Language ID is required, and you might have to train your own using the procedure and code in https://github.com/derlin/swisstext-bert-lid
 * the scripts are assumed to run on a machine having bash

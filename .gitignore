@@ -21,3 +21,4 @@ venv
 virtualenv
 
 tes*.py
+dumps
