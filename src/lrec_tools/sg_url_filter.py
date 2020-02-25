@@ -30,6 +30,7 @@ class SgUrlFilter(IUrlFilter):
 
         # misc
         'neon.niederlandistik.fu-berlin.de',  # netherlands
+        'wiktenauer.com', # Old German texts on martial arts
 
         # songs
         # 'www.karaoke-lyrics.net',
