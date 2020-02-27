@@ -1,14 +1,31 @@
+**IMPORTANT** This repository uses [SwissText](https://github.com/derlin/swisstext). The version at the time of publication was `v0.4`. For maintenance purposes, the branch [`lrec`](https://github.com/derlin/swisstext/tree/lrec) will keep the same functionalities, with only minor changes to make the code works with library updates and such.
+
 # SwissText - LREC 
 
-This repository contains the code used to generate the [SwissCrawl](https://icosys.ch/swisscrawl) corpus,
+This repository contains the code used to generate [SwissCrawl](https://icosys.ch/swisscrawl),
 a corpus of 500,000+ Swiss German (GSW) sentences gathered from crawling the web between September and November 2019.
 
 It uses the [swisstext](https://github.com/derlin/swisstext) crawling pipeline, but has some specific configurations
 and tools relative to Swiss German.
 
+# Paper and references
+
+**Paper (LREC, 2019)**: [Automatic Creation of Text Corpora for Low-Resource Languages from the Internet: The Case of Swiss German](https://arxiv.org/abs/1912.00159)
+
+**Citation**:
+```bibtex
+@article{linder2019automatic,
+  title={Automatic Creation of Text Corpora for Low-Resource Languages from the Internet: The Case of Swiss German},
+  author={Linder, Lucy and Jungo, Michael and Hennebert, Jean and Musat, Claudiu and Fischer, Andreas},
+  journal={arXiv preprint arXiv:1912.00159},
+  year={2019}
+}
+```
+
+
 # Requirements and notes
 
-* this repo uses **SwissText v0.4** (as shown in the `requirements.txt`). 
+* this repo uses **SwissText v0.4**, which is reflected in the **lrec** branch (as shown in the `requirements.txt`). 
   Using a later version may be possible, but I don't guarantee there are no breaking changes...
 * a BERT Language ID is required, and you might have to train your own using the procedure and code in https://github.com/derlin/swisstext-bert-lid
 * the scripts are assumed to run on a machine having bash
@@ -80,6 +97,7 @@ Everything is located under `src/seeding`. The two available tools (to run as co
 1. `ngram_generator.py`: generate seeds by sampling n-grams from a list of sentences,
 2. `random_generator.py`: generate seeds by concatenating X words together.
 
+They correspond to the implementations described in the paper.
 
 # Running an experiment
 
