@@ -27,6 +27,7 @@ and tools relative to Swiss German.
 
 * this repo uses **SwissText v0.4**, which is reflected in the **lrec** branch (as shown in the `requirements.txt`). 
   Using a later version may be possible, but I don't guarantee there are no breaking changes...
+* ensure you update your pip before installing the requirements: `pip install --upgrade pip`
 * a BERT Language ID is required, and you might have to train your own using the procedure and code in https://github.com/derlin/swisstext-bert-lid
 * the scripts are assumed to run on a machine having bash
 * it is your responsibility to setup a MongoDB database. By default, I assume it runs on localhost using the default port
