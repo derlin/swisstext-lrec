@@ -44,11 +44,11 @@ st_scrape >& /dev/null
 # == run search
 
 echo -e "@@ Running search...\n"
-time (st_search -d $DB -c prod_config.yaml -l debug from_file $SEED_FILE) |& tee -a $LOG_FILE_PREFIX-search.log
+time (st_search -d $DB -c "$CONFIG" -l debug from_file $SEED_FILE) |& tee -a "${LOG_FILE_PREFIX}search.log"
 
 # == get number of URLs
 
-num_urls=$(tail $LOG_FILE_PREFIX-search.log | grep -Po 'Found [0-9]+ new URLs' | sed 's/[^0-9]//g')
+num_urls=$(tail "${LOG_FILE_PREFIX}search.log" | grep -Po 'Found [0-9]+ new URLs' | sed 's/[^0-9]//g')
 echo "Got $num_urls URLs."
 
 # == run scrape
@@ -74,7 +74,7 @@ EOF
 echo -e "  iterations: $(echo $iters)\n"
 i=0
 for n in ${iters}; do
-    echo -e "\n===== ITER $i (n=$n) =====\n" | tee -a $LOG_FILE_PREFIX-scrape.log
-    (time st_scrape -d $DB -c "$CONFIG" -l info from_mongo --what ext -n $n) |& tee -a $LOG_FILE_PREFIX-scrape.log
+    echo -e "\n===== ITER $i (n=$n) =====\n" | tee -a "${LOG_FILE_PREFIX}scrape.log"
+    (time st_scrape -d $DB -c "$CONFIG" -l info from_mongo --what ext -n $n) |& tee -a "${LOG_FILE_PREFIX}scrape.log"
     i=$(( $i + 1 ))
 done
