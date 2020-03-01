@@ -110,3 +110,12 @@ After generating the seeds, you can also use the script `scripts/run_from_seeds.
 run the scraper as many times as needed to consume all the new URLs. 
 However, don't forget to update the variables at the top of the script before launching 
 (and to use a screen session: the runtime is usually hours.)
+
+# License
+
+SwissText Crawler (c) by Lucy Linder
+
+The SwissText Crawler is licensed under a Creative Commons Attribution-NonCommercial 4.0 Unported License.
+
+You should have received a copy of the license along with this work.  
+If not, see <http://creativecommons.org/licenses/by-nc/4.0/>.
