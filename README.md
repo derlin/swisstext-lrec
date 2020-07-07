@@ -69,6 +69,16 @@ the [models/default](https://gitlab.com/swisscom-gsw/lid/bert-torch-lid/-/tree/m
 
 ## Seeding
 
+NOTE: the code under `src/seeding`, is "optional". 
+In order to use it, you need first to add `src` to the python path and to install the `pandas` dependency:
+
+```bash
+# given your current directoy is the root of the project
+export PYTHONPATH=$PWD/src
+# I was using pandas 1.0.1 at the time, so I you have errors, use pip install pandas==1.0.1 instead
+pip install pandas
+```
+
 ### Dictionary sources
 
 **German dictionary**
